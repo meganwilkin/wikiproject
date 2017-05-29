@@ -2,22 +2,41 @@ require 'rails_helper'
 
 RSpec.describe WikisController, type: :controller do
 
-  # before do
-  #       user = User.create!(name: "Wiki User", email: "user@wiki.com", password: "helloworld")
-  #       create_session(user)
-  #     end
-# let(:my_wiki) { Wiki.create!(title: 'New Wiki Title', body: 'Body of New Wiki Title', private: false, user_id: nil)}
-
+# Before user logged in
   describe "GET #index" do
-    it "returns http success" do
+    it "returns redirection success" do
       get :index
       expect(response).to redirect_to new_user_session_path
     end
-    #
-    # it "assigns [my_wiki] to @wikis" do
-    #    get :index
-    #    expect(assigns(:wikis)).to eq([my_wiki])
-    #  end
+  end
+
+# User logging in
+#   before do
+#           user = User.create!(user: "Wiki User", email: "user@wiki.com", password: "helloworld")
+#           create_session(user)
+#         end
+  let(:my_wiki) { Wiki.create!(title: 'New Wiki Title', body: 'Body of New Wiki Title', private: false, user_id: nil)}
+# # once user logged in
+
+#     describe "GET #index" do
+#       it "returns http success" do
+#         get :index
+#         expect(response).to have_http_status(:success)
+#       end
+#
+#       it "assigns [my_wiki] to @wikis" do
+#          get :index
+#          expect(assigns(:wikis)).to eq([my_wiki])
+#        end
+#     end
+    describe "GET #index" do
+      @request.env['devise.mapping'] = Devise.mappings[:user]
+      sign_in users (:one)
+        it "returns http success" do
+            get :index
+            expect(response).to have_http_status(:success)
+          end
+    end
   end
 
   # describe "GET new" do
@@ -53,7 +72,6 @@ RSpec.describe WikisController, type: :controller do
   #       expect(response).to redirect_to Wiki.last
   #     end
   #   end
-end
 
   # describe "GET #show" do
   #   it "returns http success" do
