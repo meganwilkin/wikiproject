@@ -3,12 +3,16 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :wikis
 
+  before_save {self.role ||= :standard}
+
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
          :authentication_keys => [:login]
 
   validates :username, :presence => true,
             :uniqueness => {:case_sensitive => false}
+
+  enum role: [:standard, :admin, :premium]
 
    def login=(login)
      @login = login
