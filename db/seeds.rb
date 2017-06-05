@@ -1,5 +1,4 @@
 
-# Create users
 5.times do
   User.create!(
   username: Faker::Name.unique.name,
@@ -8,7 +7,6 @@
   )
 end
 
-# Create Wikis
 25.times do
   Wiki.create!(
     title:  Faker::Lorem.sentence,
@@ -18,7 +16,6 @@ end
 
   wikis = Wiki.all
 
- # Create an admin user
   admin = User.create!(
     username: 'Admin User',
     email:    'admin@example.com',
@@ -26,7 +23,6 @@ end
     role:     'admin'
   )
 
-  # Create a member
   standard = User.create!(
     username: 'Standard User',
     email:    'standard@example.com',
