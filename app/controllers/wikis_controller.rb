@@ -1,5 +1,8 @@
 class WikisController < ApplicationController
 
+# before_action :require_sign_in
+before_action :authenticate_user!
+
   def index
     @wikis = Wiki.all
   end

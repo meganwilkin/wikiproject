@@ -1,0 +1,5 @@
+<%= form_tag charge_path do %>
+  <p>Are you sure you wand to downgrade to  Standard user?</p>
+  <p>Your private Wikis will become public.</p>
+  <%= link_to "Downgrade to Standard", charge_path, method: :delete , class: 'btn btn-danger', data: { confirm: 'Are you sure you want to downgrade to standard user?' } %>
+<% end %>

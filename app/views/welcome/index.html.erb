@@ -1,2 +1,21 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<br>
+ <div class="jumbotron">
+   <h1>Wikipedia</h1>
+   <h3>Wikipedia is a resource for creating and sharing Wiki's!</h3>
+   <p>You must sign back in or sign up before you can access Wikipedia<p>
+
+     <%= link_to "Sign In", user_session_path %> or
+     <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
+   </p>
+ </div>
+
+ <div class="row">
+   <div class="col-md-6">
+     <h2>Public Wiki's</h2>
+     <p>Add further information to our existing Wiki's or create a new one.</p>
+   </div>
+   <div class="col-md-6">
+     <h2>Private Wiki's</h2>
+     <p>For USD15.00 you can create Private Wiki's, they can be viewed by everyone but can only be changed or deleted by you!</p>
+   </div>
+ </div>
