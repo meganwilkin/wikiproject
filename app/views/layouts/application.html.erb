@@ -31,6 +31,19 @@
       </ul>
           <% end %>
 
+          <% if user_signed_in? && current_user.standard? %>
+
+             <p>Updgrade your account to premium. Cost: USD15.00</p>
+             <%= link_to "Upgrade to Premium", new_charge_path, :class => "btn btn-primary" %>
+          <% end %>
+
+          <% if user_signed_in? && current_user.premium? %>
+
+            <p>Downgrade your account to a standard user. Free</p>
+            <%# add erb package %>
+            <%= link_to "Downgrade to Standard", downgrade_path, :class => 'btn btn-primary' %>
+          <% end %>
+
           <% if flash[:notice] %>
            <div class="alert alert-success">
              <button type="button" class="close" data-dismiss="alert">&times;</button>

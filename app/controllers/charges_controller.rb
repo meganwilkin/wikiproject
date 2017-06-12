@@ -1,6 +1,7 @@
 class ChargesController < ApplicationController
 
   def show
+    @charge = Stripe::Charge.find(params[:id])
   end
 
   def create
@@ -32,18 +33,30 @@ class ChargesController < ApplicationController
     }
   end
 
-  def downgrade 
+  def destroy
+    downgrade_user_to_standard
+    # current_user_downgrade_wikis
+    redirect_to root_path(current_user)
   end
 
-  def destroy
-    if @stripe_btn_data.destroy
-      downgrade_user_to_standard
-      current_user_downgrade_wikis
-      flash[:success] = "Sorry to see you go"
-      redirect_to root_path(current_user)
-    else
-      flash[:error] = "Sorry we can't downgrade you at the moment"
-      redirect_to root_path(current_user)
-    end
-  end
+  # def downgrade
+  #   if params[:id].nil? # if there is no user id in params, show current one
+  #     @user = current_user
+  #   else # if there is the user id in params just use it,
+  #    # maybe get 'authorization failed'
+  #    @user = User.find params[:id]
+  #   end
+  # end
+
+  # def destroy
+  #   if @stripe_btn_data.destroy
+  #     downgrade_user_to_standard
+  #     current_user_downgrade_wikis
+  #     flash[:success] = "Sorry to see you go"
+  #     redirect_to root_path(current_user)
+  #   else
+  #     flash[:error] = "Sorry we can't downgrade you at the moment"
+  #     redirect_to root_path(current_user)
+  #   end
+  # end
 end

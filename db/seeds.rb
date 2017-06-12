@@ -29,6 +29,12 @@ end
     password: 'helloworld'
   )
 
+  premium = User.create!(
+  username: 'Premium User',
+  email:    'premium@example.com',
+  password: 'helloworld'
+  )
+
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Wiki.count} wikis created"
