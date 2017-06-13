@@ -1,4 +1,4 @@
-class PostPolicy < ApplicationPolicy
+class PostPolicy < ApplicationPolicy::
   def update?
     user.present?
   end
