@@ -19,5 +19,10 @@
         <%=link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this wiki?'} %>
    </div>
    <% end %>
+   <div class="col-md-8">
+    <% if user_only_authorised_for_public_wiki? && wiki_private? %>
+      <p>**This is a Private Wiki!**</p>
+      <p>**Only Premium Users are able to view the content of the Wiki**</p>
+    </div>
+    <% end %>
 </div>
-        

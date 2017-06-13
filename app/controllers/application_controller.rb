@@ -34,8 +34,8 @@ class ApplicationController < ActionController::Base
 
   def current_user_downgrade_wikis
     privatewikis = current_user.wikis.where(private: true)
-    privatewikis.each do |wiki|
-      wiki.update_attribute(private: false)
+    privatewikis.each do |privatewikis|
+      privatewikis.update_attributes(private: false)
     end
   end
 
