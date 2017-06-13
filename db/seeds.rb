@@ -10,8 +10,9 @@ end
 25.times do
   Wiki.create!(
     title:  Faker::Lorem.sentence,
-    body:   Faker::Lorem.paragraph
-  )
+    body:   Faker::Lorem.paragraph,
+    private: false
+    )
 end
 
   wikis = Wiki.all

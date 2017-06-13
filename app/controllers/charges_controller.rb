@@ -36,6 +36,7 @@ class ChargesController < ApplicationController
   def destroy
     downgrade_user_to_standard
     # current_user_downgrade_wikis
+    current_user_downgrade_wikis
     redirect_to root_path(current_user)
   end
 

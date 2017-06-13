@@ -14,8 +14,6 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
-  # before_action :authenticate_user!
-
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
@@ -36,8 +34,8 @@ class ApplicationController < ActionController::Base
 
   def current_user_downgrade_wikis
     privatewikis = current_user.wikis.where(private: true)
-    privatewikis.each do |privatewikis|
-      privatewikis.posts_update_attributes(:private, false)
+    privatewikis.each do |wiki|
+      wiki.update_attribute(private: false)
     end
   end
 
