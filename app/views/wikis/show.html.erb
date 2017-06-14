@@ -3,7 +3,7 @@
  <div class="row">
    <div class="col-md-8">
      <% if user_is_authorised_for_private_wiki? %>
-     <p><%= @wiki.body %></p>
+     <p><%= markdown(@wiki.body) %></p>
    </div>
    <div class="col-md-4">
        <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
@@ -12,7 +12,7 @@
    <% end %>
    <div class="col-md-8">
      <% if user_only_authorised_for_public_wiki? && wiki_public? %>
-      <p><%= @wiki.body %></p>
+      <p><%= markdown(@wiki.body) %></p>
    </div>
    <div class="col-md-4">
         <%=link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
