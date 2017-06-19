@@ -2,6 +2,10 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :wikis
+  has_many :wikis, through: :collaborators
+  has_many :collaborators
+
+  scope :all_except, -> (user) { where.not(id: user)}
 
   before_save {self.role ||= :standard}
 

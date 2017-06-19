@@ -4,6 +4,7 @@ class WikisController < ApplicationController
 before_action :authenticate_user!
 
   def index
+    # @wikis = policy_scope(Wiki)
     @wikis = Wiki.all
   end
 
