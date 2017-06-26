@@ -15,4 +15,8 @@ module WikisHelper
     @wiki.private? == true
   end
 
+  def collaborator_for_private_wiki?
+    @wiki.collaborator.user_id?
+  end
+
 end

@@ -41,8 +41,4 @@ class User < ActiveRecord::Base
     end
   end
 
-  # def collaborators
-  #   Collaborator.where(user_id: wiki)
-  # end
-
 end
