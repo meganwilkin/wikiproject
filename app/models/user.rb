@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   has_many :wikis, through: :collaborators
   has_many :collaborators
 
+  # delegate :wikis, to: :collaborators
+
   scope :all_except, -> (user) { where.not(id: user)}
 
   before_save {self.role ||= :standard}
@@ -38,4 +40,9 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  # def collaborators
+  #   Collaborator.where(user_id: wiki)
+  # end
+
 end

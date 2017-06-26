@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :wikis
   resources :charges, only: [:new, :create]
   resource :charge, only: [:destroy]
+  resources :collaborators
 
   devise_for :users
 
